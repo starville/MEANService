@@ -11,8 +11,8 @@ MEAN Stack Community Service - What does it MEAN?
 ## Installation
   - git clone git@github.com:MEAN-STACK/MEANService.git meanservice
   - cd meanservice
-  - git pull origin develop
-  - git checkout develop
+  - git pull origin master(or develop)
+  - git checkout master(or develop)
   - npm install .
   - bower install 
 
