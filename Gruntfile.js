@@ -1,4 +1,4 @@
-// Generated on 2014-01-09 using generator-angular 0.7.1
+// Generated on 2014-01-12 using generator-angular 0.7.1
 'use strict';
 
 // # Globbing
@@ -38,13 +38,9 @@ module.exports = function (grunt) {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
-      css: {
-        files: ['<%= yeoman.app %>/sass/*.scss'],
-        tasks: ['compass']
-      },
-      styles: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'autoprefixer']
+      compass: {
+        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        tasks: ['compass:server', 'autoprefixer']
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -58,15 +54,6 @@ module.exports = function (grunt) {
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
-      }
-    },
-
-    compass: {
-      dist: {
-        options: {
-          sassDir: '<%= yeoman.app %>/sass',
-          cssDir: '<%= yeoman.app %>/styles'
-        }
       }
     },
 
@@ -163,6 +150,34 @@ module.exports = function (grunt) {
 
 
 
+    // Compiles Sass to CSS and generates necessary files if requested
+    compass: {
+      options: {
+        sassDir: '<%= yeoman.app %>/styles',
+        cssDir: '.tmp/styles',
+        generatedImagesDir: '.tmp/images/generated',
+        imagesDir: '<%= yeoman.app %>/images',
+        javascriptsDir: '<%= yeoman.app %>/scripts',
+        fontsDir: '<%= yeoman.app %>/styles/fonts',
+        importPath: '<%= yeoman.app %>/bower_components',
+        httpImagesPath: '/images',
+        httpGeneratedImagesPath: '/images/generated',
+        httpFontsPath: '/styles/fonts',
+        relativeAssets: false,
+        assetCacheBuster: false,
+        raw: 'Sass::Script::Number.precision = 10\n'
+      },
+      dist: {
+        options: {
+          generatedImagesDir: '<%= yeoman.dist %>/images/generated'
+        }
+      },
+      server: {
+        options: {
+          debugInfo: true
+        }
+      }
+    },
 
     // Renames files for browser caching purposes
     rev: {
@@ -290,13 +305,13 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'copy:styles'
+        'compass:server'
       ],
       test: [
-        'copy:styles'
+        'compass'
       ],
       dist: [
-        'copy:styles',
+        'compass:dist',
         'imagemin',
         'svgmin'
       ]
@@ -347,7 +362,6 @@ module.exports = function (grunt) {
       'clean:server',
       'bower-install',
       'concurrent:server',
-      'compass',
       'autoprefixer',
       'connect:livereload',
       'watch'
@@ -362,7 +376,6 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
-    'compass',
     'autoprefixer',
     'connect:test',
     'karma'
@@ -373,7 +386,6 @@ module.exports = function (grunt) {
     'bower-install',
     'useminPrepare',
     'concurrent:dist',
-    'compass',
     'autoprefixer',
     'concat',
     'ngmin',
