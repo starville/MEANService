@@ -11,10 +11,9 @@
     "angular-cookies": "1.2.7",
     "angular-sanitize": "1.2.7",
     "angular-route": "1.2.7",
-    "components-font-awesome": "4.0.3",
-    "angular-snap": "1.2.0",
     "angular-bootstrap": "~0.9.0",
     "angular-ui-router": "~0.2.7",
+    "font-awesome": "~4.0.3",
     "snapjs": "*",
     "angular-snapjs": "~1.2.0"
   },
