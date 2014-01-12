@@ -38,6 +38,10 @@ module.exports = function (grunt) {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
+      css: {
+        files: ['<%= yeoman.app %>/sass/*.scss'],
+        tasks: ['compass']
+      },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -54,6 +58,15 @@ module.exports = function (grunt) {
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
+      }
+    },
+
+    compass: {
+      dist: {
+        options: {
+          sassDir: '<%= yeoman.app %>/sass',
+          cssDir: '<%= yeoman.app %>/styles'
+        }
       }
     },
 
@@ -334,6 +347,7 @@ module.exports = function (grunt) {
       'clean:server',
       'bower-install',
       'concurrent:server',
+      'compass',
       'autoprefixer',
       'connect:livereload',
       'watch'
@@ -348,6 +362,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
+    'compass',
     'autoprefixer',
     'connect:test',
     'karma'
@@ -358,6 +373,7 @@ module.exports = function (grunt) {
     'bower-install',
     'useminPrepare',
     'concurrent:dist',
+    'compass',
     'autoprefixer',
     'concat',
     'ngmin',
