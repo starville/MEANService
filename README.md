@@ -7,6 +7,8 @@ MEAN Stack Community Service - What does it MEAN?
   - [Node.js](http://nodejs.org/)
   - [Git](http://git-scm.com/downloads)
   - [Yeoman](http://yeoman.io/) 
+  - [Ruby](https://www.ruby-lang.org/ko/downloads/)
+  - [Compass](http://compass-style.org/install/)
 
 ## Installation
   - git clone git@github.com:MEAN-STACK/MEANService.git meanservice
