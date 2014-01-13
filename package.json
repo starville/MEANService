@@ -1,7 +1,11 @@
 {
   "name": "meanservice",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "express": "~3.4.7",
+    "express-play": "latest",
+    "fromjs": "~2.1.7-1"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",
