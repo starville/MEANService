@@ -19,7 +19,7 @@ MEAN Stack Community Service - What does it MEAN?
   - bower install 
 
 ## Execution 
-  - grunt server
+  - node server
 
 ## Build
   - grunt build : create the 'dist' folder
