@@ -1,4 +1,12 @@
 {
+  "api/*": {
+    "node": true,
+    "laxcomma": true
+  },
+  "app/*": {
+    "browser": true,
+    "strict": true
+  },
   "esnext": true,
   "bitwise": true,
   "camelcase": true,
