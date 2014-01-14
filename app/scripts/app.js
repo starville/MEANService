@@ -4,10 +4,9 @@ angular.module('meanserviceApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute',
-  'snap'
+  'ngRoute'
 ])
-  .config(function ($routeProvider, snapRemoteProvider) {
+  .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -16,8 +15,4 @@ angular.module('meanserviceApp', [
       .otherwise({
         redirectTo: '/'
       });
-
-    snapRemoteProvider.globalOptions = {
-      disable: 'right'
-    };
-  });
+  }]);
