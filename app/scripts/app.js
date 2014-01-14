@@ -4,15 +4,25 @@ angular.module('meanserviceApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ui.router',
+  'ui.bootstrap'
 ])
-  .config(['$routeProvider', function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$provide',
+  function ($stateProvider, $urlRouterProvider, $httpProvider, $provide) {
+
+    /**
+     * @description
+     * This is ui-router config
+     * use $urlRouteProvider, $stateProvider
+     */
+    $urlRouterProvider.otherwise("/");
+
+    $stateProvider
+      .state('main', {
+        url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .otherwise({
-        redirectTo: '/'
-      });
+
   }]);
